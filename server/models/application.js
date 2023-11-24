@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize, Model } from 'sequelize';
-import sequelize from '../config/sequelize.js';
+import { sequelize } from '../config/config.js';
 import Job from './job.js';
 import User from './user.js';
 

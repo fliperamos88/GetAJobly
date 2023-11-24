@@ -1,10 +1,10 @@
 import { DataTypes, Sequelize, Model } from 'sequelize';
-import sequelize from '../config/sequelize.js';
+import { sequelize } from '../config/config.js';
 import Company from './company.js';
 import User from './user.js';
 
 const Job = sequelize.define(
-  'jobs',
+  'job',
   {
     id: {
       type: DataTypes.INTEGER,

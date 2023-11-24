@@ -1,8 +1,8 @@
 import { DataTypes, Sequelize, Model } from 'sequelize';
-import sequelize from '../config/sequelize.js';
+import { sequelize } from '../config/config.js';
 
 const Company = sequelize.define(
-  'companies',
+  'company',
   {
     handle: {
       type: DataTypes.STRING(100),

@@ -1,6 +1,6 @@
 import { DataTypes, Sequelize, Model } from 'sequelize';
-import sequelize from '../config/sequelize.js';
-import Job from './job.js';
+import { sequelize, BCRYPT_WORK_FACTOR } from '../config/config.js';
+import bcrypt from 'bcrypt';
 
 const User = sequelize.define(
   'user',
@@ -12,6 +12,9 @@ const User = sequelize.define(
     password: {
       type: DataTypes.TEXT,
       allowNull: false,
+      // set(value) {
+      //   this.setDataValue('password', bcrypt.hash(value, saltRounds));
+      // },
     },
     first_name: {
       type: DataTypes.TEXT,
@@ -31,23 +34,33 @@ const User = sequelize.define(
     },
     is_admin: {
       type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   },
   {
     timestamps: false,
+    hooks: {
+      beforeCreate: async (user) => {
+        if (user.password) {
+          user.password = await bcrypt.hashSync(
+            user.password,
+            BCRYPT_WORK_FACTOR
+          );
+        }
+      },
+      // beforeUpdate: async (user) => {
+      //   if (user.password) {
+      //     user.password = await bcrypt.hashSync(user.password, saltRounds);
+      //   }
+      // },
+      // afterCreate: async (user) => {
+      //   console.log('This is a new user:' + user.username);
+      // },
+    },
   }
 );
+User.prototype.authenticate = async (pwd, userpassword) => {
+  return await bcrypt.compare(pwd, userpassword);
+};
 
-// CREATE TABLE users (
-// //     username VARCHAR(25) PRIMARY KEY,
-// //     password TEXT NOT NULL,
-// //     first_name TEXT NOT NULL,
-// //     last_name TEXT NOT NULL,
-// //     email TEXT NOT NULL
-// //       CHECK (position('@' IN email) > 1),
-// //     is_admin BOOLEAN NOT NULL DEFAULT FALSE
-// //     createdAt DATE,
-// //     updatedAt DATE,
-
-// //   );
 export default User;

@@ -1,6 +1,6 @@
 import User from '../models/user.js';
-import Application from '../models/application.js';
 import Job from '../models/job.js';
+import { createToken } from '../helpers/jwtToken.js';
 
 export const getAll = async (req, res, next) => {
   try {
@@ -13,11 +13,11 @@ export const getAll = async (req, res, next) => {
 
 export const getOne = async (req, res, next) => {
   try {
+    console.log(req.params.id);
     const user = await User.findByPk(req.params.id, {
       include: {
         model: Job,
         as: 'job_applications',
-        attributes: { exclude: ['equity', 'salary', 'application'] },
       },
     });
     return res.json({ User: user });
@@ -29,7 +29,11 @@ export const getOne = async (req, res, next) => {
 export const createNew = async (req, res, next) => {
   try {
     const newUser = await User.create(req.body);
-    return res.json({ User_Created: newUser });
+    const token = createToken(newUser);
+    return res.json({
+      User_Created: newUser,
+      token,
+    });
   } catch (err) {
     return next(err);
   }

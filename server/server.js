@@ -1,5 +1,5 @@
 import app from './app.js';
-import sequelize from './config/sequelize.js';
+import { sequelize } from './config/config.js';
 import User from './models/user.js';
 import Company from './models/company.js';
 import Job from './models/job.js';
