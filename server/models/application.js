@@ -32,14 +32,14 @@ const Application = sequelize.define(
 User.belongsToMany(Job, {
   as: 'job_applications',
   through: Application,
-  uniqueKey: false,
+  uniqueKey: true,
   foreignKey: 'username',
   otherKey: 'job_id',
 });
 Job.belongsToMany(User, {
   as: 'job_candidates',
   through: Application,
-  uniqueKey: false,
+  uniqueKey: true,
   foreignKey: 'job_id',
   otherKey: 'username',
 });

@@ -11,6 +11,6 @@ router.post('/', Application.createNew);
 
 router.patch('/:id', Application.update);
 
-router.delete('/:id', Application.deleteOne);
+router.delete('/', Application.deleteOne);
 
 export default router;

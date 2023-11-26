@@ -1,5 +1,6 @@
 import express, { json } from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import { NotFoundError } from './helpers/expressError.js';
 import homeRouter from './routes/homeRoutes.js';
 import userRouter from './routes/userRoutes.js';
@@ -17,10 +18,11 @@ import authenticateRoutes from './routes/authenticateRoutes.js';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/', homeRouter);
+app.use(cookieParser());
+app.use('/api', homeRouter);
 app.use('/api/users', userRouter);
 app.use('/api/companies', companyRouter);
 app.use('/api/jobs', jobRouter);

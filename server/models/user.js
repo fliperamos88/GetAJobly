@@ -42,17 +42,16 @@ const User = sequelize.define(
     hooks: {
       beforeCreate: async (user) => {
         if (user.password) {
-          user.password = await bcrypt.hashSync(
-            user.password,
-            BCRYPT_WORK_FACTOR
-          );
+          user.password = await bcrypt.hash(user.password, BCRYPT_WORK_FACTOR);
         }
       },
-      // beforeUpdate: async (user) => {
-      //   if (user.password) {
-      //     user.password = await bcrypt.hashSync(user.password, saltRounds);
-      //   }
-      // },
+      beforeUpdate: async (user) => {
+        if (user.password !== '') {
+          user.password = await bcrypt.hash(user.password, BCRYPT_WORK_FACTOR);
+        } else {
+          user.password = this.password;
+        }
+      },
       // afterCreate: async (user) => {
       //   console.log('This is a new user:' + user.username);
       // },

@@ -6,7 +6,7 @@ import Job from './models/job.js';
 import Application from './models/application.js';
 
 // await sequelize.sync();
-await sequelize.sync({ alter: true });
+// await sequelize.sync({ alter: true });
 // console.log('The table for the Company model was just (re)created!');
 
 app.listen(3001, () => {

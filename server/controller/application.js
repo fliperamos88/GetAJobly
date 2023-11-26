@@ -1,5 +1,6 @@
 import Application from '../models/application.js';
 import User from '../models/user.js';
+import { Op } from 'sequelize';
 
 export const getAll = async (req, res, next) => {
   try {
@@ -30,7 +31,7 @@ export const createNew = async (req, res, next) => {
 
 export const update = async (req, res, next) => {
   try {
-    const application = await Application.findByPk(req.params.id);
+    const application = await Application.findAll(req.params.id);
     await application.update(req.body);
     return res.json({ Application: application });
   } catch (err) {
@@ -40,7 +41,14 @@ export const update = async (req, res, next) => {
 
 export const deleteOne = async (req, res, next) => {
   try {
-    const application = await Application.findByPk(req.params.id);
+    const application = await Application.findOne({
+      where: {
+        [Op.and]: [
+          { username: req.body.username },
+          { job_id: req.body.job_id },
+        ],
+      },
+    });
     await application.destroy();
     return res.json({ msg: 'Application withdraw' });
   } catch (err) {

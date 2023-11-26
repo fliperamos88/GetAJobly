@@ -1,10 +1,38 @@
 import Company from '../models/company.js';
 import Job from '../models/job.js';
+import { Op } from 'sequelize';
 
 export const getAll = async (req, res, next) => {
   try {
-    const allCompanies = await Company.findAll({});
-    res.send({ Companies: allCompanies });
+    let allCompanies;
+    if (req.query.term) {
+      allCompanies = await Company.findAll({
+        where: {
+          name: {
+            [Op.iLike]: `%${req.query.term}%`,
+          },
+        },
+        include: {
+          model: Job,
+          include: {
+            model: Company,
+            attributes: ['name'],
+          },
+        },
+      });
+    } else {
+      allCompanies = await Company.findAll({
+        include: {
+          model: Job,
+          include: {
+            model: Company,
+            attributes: ['name'],
+          },
+        },
+      });
+    }
+
+    res.json({ Companies: allCompanies });
   } catch (err) {
     return next(err);
   }
@@ -12,7 +40,15 @@ export const getAll = async (req, res, next) => {
 
 export const getOne = async (req, res, next) => {
   try {
-    const company = await Company.findByPk(req.params.id, { include: Job });
+    const company = await Company.findByPk(req.params.id, {
+      include: {
+        model: Job,
+        include: {
+          model: Company,
+          attributes: ['name'],
+        },
+      },
+    });
     return res.json({ Company: company });
   } catch (err) {
     return next(err);

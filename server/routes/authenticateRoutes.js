@@ -1,6 +1,11 @@
 import express from 'express';
-import authenticateUser from '../controller/authenticate.js';
+import { login, register } from '../controller/authenticate.js';
+import { authenticateJWT } from '../middleware/authentication.js';
 
 const router = express.Router();
 
-export default router.post('/:id', authenticateUser);
+router.post('/register', register);
+
+router.post('/login', login, authenticateJWT);
+
+export default router;

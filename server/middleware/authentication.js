@@ -1,5 +1,5 @@
-import { UnauthorizedError } from '../helpers/expressError';
-import { validateToken } from '../helpers/jwtToken';
+import { UnauthorizedError } from '../helpers/expressError.js';
+import { validateToken } from '../helpers/jwtToken.js';
 
 /** Middleware: Authenticate user.
  *
@@ -9,12 +9,11 @@ import { validateToken } from '../helpers/jwtToken';
  * It's not an error if no token was provided or if the token is not valid.
  */
 
-const authenticateJWT = (req, res, next) => {
+export const authenticateJWT = (req, res, next) => {
   try {
-    const authHeader = req.headers && req.headers.authorization;
-    if (authHeader) {
-      const token = authHeader.replace(/^[Bb]earer /, '').trim();
-      res.locals.user = validateToken(token);
+    const authToken = req.cookies.Jobly[1];
+    if (authToken) {
+      req.user_data = validateToken(authToken);
     }
     return next();
   } catch (err) {
@@ -27,9 +26,9 @@ const authenticateJWT = (req, res, next) => {
  * If not, raises Unauthorized.
  */
 
-const ensureLoggedIn = (req, res, next) => {
+export const ensureLoggedIn = (req, res, next) => {
   try {
-    if (!res.locals.user) throw new UnauthorizedError();
+    if (!req.user_data) throw new UnauthorizedError();
     return next();
   } catch (err) {
     return next(err);
@@ -43,7 +42,7 @@ const ensureLoggedIn = (req, res, next) => {
 
 const ensureAdmin = (req, res, next) => {
   try {
-    if (!res.locals.user || !res.locals.user.isAdmin) {
+    if (!res.locals.user || !res.locals.user.is_admin) {
       throw new UnauthorizedError();
     }
     return next();
@@ -61,7 +60,7 @@ const ensureAdmin = (req, res, next) => {
 const ensureCorrectUserOrAdmin = (req, res, next) => {
   try {
     const user = res.locals.user;
-    if (!(user && (user.isAdmin || user.username === req.params.username))) {
+    if (!(user && (user.is_admin || user.username === req.params.username))) {
       throw new UnauthorizedError();
     }
     return next();

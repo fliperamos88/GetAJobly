@@ -1,9 +1,24 @@
 import Job from '../models/job.js';
 import Company from '../models/company.js';
+import { Op } from 'sequelize';
 
 export const getAll = async (req, res, next) => {
   try {
-    const allJobs = await Job.findAll();
+    let allJobs;
+    if (req.query.term) {
+      allJobs = await Job.findAll({
+        where: {
+          title: {
+            [Op.iLike]: `%${req.query.term}%`,
+          },
+        },
+        include: { model: Company, attributes: ['name'] },
+      });
+    } else {
+      allJobs = await Job.findAll({
+        include: { model: Company, attributes: ['name'] },
+      });
+    }
     res.send({ All_Jobs: allJobs });
   } catch (err) {
     return next(err);
@@ -13,7 +28,7 @@ export const getAll = async (req, res, next) => {
 export const getOne = async (req, res, next) => {
   try {
     const job = await Job.findByPk(req.params.id, {
-      include: Company,
+      include: { model: Company, attributes: ['name'] },
     });
     return res.json({ Job: job });
   } catch (err) {
