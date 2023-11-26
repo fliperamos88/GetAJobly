@@ -1,13 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Jobly } from '../../helpers/requestApi';
 import CompanyCard from './CompanyCard';
 import { v4 as uuidv4 } from 'uuid';
 import FilterForm from '../Forms/FilterForm';
 import axios from 'axios';
+import {
+  FilterContext,
+  FilterHandlerContext,
+} from '../../helpers/filterProvider';
 
 const CompaniesList = () => {
   const [compList, setCompList] = useState([]);
-  const [filter, setFilter] = useState(false);
+  // const [filter, setFilter] = useState(false);
+  const filter = useContext(FilterContext);
+  const setFilter = useContext(FilterHandlerContext);
 
   const searchHandler = async (term) => {
     const { data } = await Jobly.getAll('companies', term);

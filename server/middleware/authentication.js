@@ -28,7 +28,11 @@ export const authenticateJWT = (req, res, next) => {
 
 export const ensureLoggedIn = (req, res, next) => {
   try {
-    if (!req.user_data) throw new UnauthorizedError();
+    if (!req.user_data) {
+      throw new UnauthorizedError();
+    } else if (req.user_data.username !== req.params.id) {
+      throw new UnauthorizedError();
+    }
     return next();
   } catch (err) {
     return next(err);

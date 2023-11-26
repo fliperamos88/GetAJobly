@@ -9,9 +9,7 @@ const router = express.Router();
 
 router.get('/', User.getAll);
 
-// router.get('/:id', authenticateJWT, ensureLoggedIn, User.getOne);
-
-router.get('/:id', User.getOne);
+router.get('/:id', authenticateJWT, ensureLoggedIn, User.getOne);
 
 router.patch('/:id', authenticateJWT, ensureLoggedIn, User.update);
 

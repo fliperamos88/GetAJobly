@@ -21,7 +21,6 @@ export const getOne = async (req, res, next) => {
         include: { model: Company, attributes: ['name'] },
       },
     });
-    console.log(req.user_data);
     return res.json({ User: user });
   } catch (err) {
     return next(err);

@@ -1,11 +1,12 @@
 import { Jobly } from '../../helpers/requestApi';
 import { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { v4 as uuidv4 } from 'uuid';
 import JobCard from '../Jobs/JobCard';
 
 const UserApplications = () => {
+  const navigate = useNavigate();
   const { username } = useParams();
   const location = useLocation();
   const [jobList, setJobList] = useState([]);
@@ -13,8 +14,12 @@ const UserApplications = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const { data } = await Jobly.getOne('users', username);
-      setJobList(data.User.job_applications);
+      try {
+        const { data } = await Jobly.getOne('users', username);
+        setJobList(data.User.job_applications);
+      } catch {
+        navigate(`/`);
+      }
     };
     fetchUser();
   }, []);

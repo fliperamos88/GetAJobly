@@ -1,16 +1,12 @@
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useParams,
-  useLocation,
-} from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { Jobly } from '../helpers/requestApi';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { FilterHandlerContext } from '../helpers/filterProvider';
 const cookies = new Cookies();
 
 export const NavBar = () => {
+  const setFilter = useContext(FilterHandlerContext);
   const [user, setUser] = useState('');
 
   useEffect(() => {
@@ -41,8 +37,12 @@ export const NavBar = () => {
                 <NavLink to={`/${cookies.get('Jobly')[0]}/profile`}>
                   Profile
                 </NavLink>
-                <NavLink to="/companies">Companies</NavLink>
-                <NavLink to="/jobs">Jobs</NavLink>
+                <NavLink to="/companies" onClick={() => setFilter(false)}>
+                  Companies
+                </NavLink>
+                <NavLink to="/jobs" onClick={() => setFilter(false)}>
+                  Jobs
+                </NavLink>
                 <NavLink to={`/${cookies.get('Jobly')[0]}/applications`}>
                   Applications
                 </NavLink>

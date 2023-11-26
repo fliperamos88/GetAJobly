@@ -1,14 +1,19 @@
 import { useState, useEffect } from 'react';
 import { Jobly } from '../../helpers/requestApi';
-import { Routes, Route, useParams } from 'react-router-dom';
+import { Routes, Route, useParams, useNavigate } from 'react-router-dom';
 
 const UserEditForm = () => {
   let { username } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fectchUser = async () => {
-      const { data } = await Jobly.getOne('users', username);
-      setFormData(data.User);
+      try {
+        const { data } = await Jobly.getOne('users', username);
+        setFormData(data.User);
+      } catch {
+        navigate(`/`);
+      }
     };
     fectchUser();
   }, []);
