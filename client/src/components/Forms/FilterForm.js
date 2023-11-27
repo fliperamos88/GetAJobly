@@ -18,15 +18,20 @@ const FilterForm = ({ term, searchHandler }) => {
   return (
     <>
       <div>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            id="term"
-            name="term"
-            value={formData.term}
-            onChange={handleChange}
-          ></input>
-          <button>Sarch Term</button>
+        <form onSubmit={handleSubmit} className="filter-form-container">
+          <div>
+            <input
+              type="text"
+              id="term"
+              name="term"
+              value={formData.term}
+              onChange={handleChange}
+              className="filter-input"
+            ></input>
+          </div>
+          <div>
+            <button>Sarch Term</button>
+          </div>
         </form>
       </div>
     </>

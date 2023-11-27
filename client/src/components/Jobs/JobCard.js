@@ -46,12 +46,26 @@ const JobCard = ({ job, applicationList, removeHandle }) => {
   }, []);
 
   return (
-    <div style={{ border: 'solid 3px red' }}>
-      <h5>{job.title}</h5>
-      <h5>{job.salary}</h5>
-      <h5>{job.equity}</h5>
-      <h5>{job.company.name}</h5>
-
+    <div className="job-container">
+      <div className="job-details-container">
+        <div>
+          <span>
+            <b>Job Title:</b>&nbsp;
+            {job.title}
+          </span>
+        </div>
+        <div>
+          <span>
+            <b>Job Salary:</b>&nbsp; ${job.salary}/year
+          </span>
+        </div>
+        <div>
+          <span>
+            <b>Hiring Company:</b>&nbsp;
+            {job.company.name}
+          </span>
+        </div>
+      </div>
       <div>
         {applied && (
           <button style={{ color: 'green' }} onClick={withdrawFromJob}>

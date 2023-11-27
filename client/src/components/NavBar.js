@@ -21,32 +21,21 @@ export const NavBar = () => {
 
   const logOut = () => {
     cookies.remove('Jobly');
-    setUser('');
   };
 
   return (
     <>
-      <div>
-        <div className="navBar">
+      <div className="navBar">
+        <div className="navBar-LoggedOut">
           <div>
-            <Link to="/">JOBLY</Link>
+            <Link to="/" className="nav-Logo">
+              JOBLY
+            </Link>
           </div>
-          <div>
+          <div className="nav-Links">
             {cookies.get('Jobly') ? (
               <>
-                <NavLink to={`/${cookies.get('Jobly')[0]}/profile`}>
-                  Profile
-                </NavLink>
-                <NavLink to="/companies" onClick={() => setFilter(false)}>
-                  Companies
-                </NavLink>
-                <NavLink to="/jobs" onClick={() => setFilter(false)}>
-                  Jobs
-                </NavLink>
-                <NavLink to={`/${cookies.get('Jobly')[0]}/applications`}>
-                  Applications
-                </NavLink>
-                <NavLink to="/" onClick={logOut} reloadDocument>
+                <NavLink to="/" reloadDocument onClick={logOut}>
                   Log Out
                 </NavLink>
               </>
@@ -59,10 +48,27 @@ export const NavBar = () => {
           </div>
         </div>
         {cookies.get('Jobly') && (
-          <div>
-            <h1>
-              Welcome {user.first_name} {user.last_name}
-            </h1>
+          <div className="navBar-Logged">
+            <div className="navBar-Welcome">
+              <h3 className="">Welcome </h3>
+              <span>
+                {user.first_name} {user.last_name}
+              </span>
+            </div>
+            <div className="nav-Links">
+              <NavLink to={`/${cookies.get('Jobly')[0]}/profile`}>
+                Profile Edit
+              </NavLink>
+              <NavLink to={`/${cookies.get('Jobly')[0]}/applications`}>
+                | Applications
+              </NavLink>
+              <NavLink to="/companies" onClick={() => setFilter(false)}>
+                | Companies
+              </NavLink>
+              <NavLink to="/jobs" onClick={() => setFilter(false)}>
+                | Jobs
+              </NavLink>
+            </div>
           </div>
         )}
       </div>

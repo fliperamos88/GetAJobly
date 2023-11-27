@@ -50,80 +50,81 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="formContainer">
-      <div className="">
-        <h5 className="">Register</h5>
-      </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div className="">
-            <label htmlFor="first_name" className="">
-              First Name
-            </label>
-            <input
-              type="text"
-              id="first_name"
-              name="first_name"
-              value={formData.first_name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="">
-            <label htmlFor="lastName" className="">
-              Last Name
-            </label>
-            <input
-              type="text"
-              id="last_name"
-              name="last_name"
-              value={formData.last_name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="">
-            <label htmlFor="email" className="">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="">
-            <label htmlFor="username" className="">
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="">
-            <label htmlFor="password" className="">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="text-center">
-            <button className="btnContact">SUBMIT</button>
-          </div>
-        </form>
-      </div>
-      {/* <div className="d-flex justify-content-center mt-4 mx-2">
+    <div className="form-component">
+      <div className="form-container" id="form-container-register">
+        <div className="">
+          <h2 className="">Register</h2>
+        </div>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="input-container">
+              <label htmlFor="first_name" className="">
+                First Name
+              </label>
+              <input
+                type="text"
+                id="first_name"
+                name="first_name"
+                value={formData.first_name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-container">
+              <label htmlFor="lastName" className="">
+                Last Name
+              </label>
+              <input
+                type="text"
+                id="last_name"
+                name="last_name"
+                value={formData.last_name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-container">
+              <label htmlFor="email" className="">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              ></input>
+            </div>
+            <div className="input-container">
+              <label htmlFor="username" className="">
+                Username
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              ></input>
+            </div>
+            <div className="input-container">
+              <label htmlFor="password" className="">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              ></input>
+            </div>
+            <div className="submit-edit">
+              <button className="btnContact">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+        {/* <div className="d-flex justify-content-center mt-4 mx-2">
         {submit && (
           <div
             className={alertMSG ? 'alert alert-success' : 'alert alert-danger'}
@@ -139,6 +140,7 @@ const RegisterForm = () => {
           </div>
         )}
       </div> */}
+      </div>
     </div>
   );
 };

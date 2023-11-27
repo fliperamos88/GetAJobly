@@ -50,42 +50,43 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="formContainer">
-      <div className="">
-        <h5 className="">Logig</h5>
-      </div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div className="">
-            <label htmlFor="username" className="">
-              Username
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="">
-            <label htmlFor="password" className="">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-            ></input>
-          </div>
-          <div className="text-center">
-            <button className="btnContact">SUBMIT</button>
-          </div>
-        </form>
-      </div>
-      {/* <div className="d-flex justify-content-center mt-4 mx-2">
+    <div className="form-component">
+      <div className="form-container" id="form-container-login">
+        <div className="">
+          <h2 className="">Login</h2>
+        </div>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div className="input-container">
+              <label htmlFor="username" className="">
+                Username
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              ></input>
+            </div>
+            <div className="input-container">
+              <label htmlFor="password" className="">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              ></input>
+            </div>
+            <div className="submit-edit">
+              <button className="btnContact">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+        {/* <div className="d-flex justify-content-center mt-4 mx-2">
         {submit && (
           <div
             className={alertMSG ? 'alert alert-success' : 'alert alert-danger'}
@@ -101,6 +102,7 @@ const LoginForm = () => {
           </div>
         )}
       </div> */}
+      </div>
     </div>
   );
 };

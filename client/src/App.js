@@ -21,21 +21,21 @@ function App() {
           <Route element={<FilterProvider />}>
             <Route element={<AuthRoute />}>
               <Route element={<NavBar />}>
-                <Route index element={<Home key="general-home" />} />
-                <Route path="login" element={<LoginForm />} />
-                <Route path="register" element={<RegisterForm />} />
-                <Route path=":username" element={<Home key="logged-home" />} />
-                <Route path=":username/profile" element={<EditForm />} />
+                <Route path="/" element={<Home key="general-home" />} />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/register" element={<RegisterForm />} />
+                <Route path="/:username" element={<Home key="logged-home" />} />
+                <Route path="/:username/profile" element={<EditForm />} />
                 <Route
-                  path=":username/applications"
+                  path="/:username/applications"
                   element={<UserApplications />}
                 />
-                <Route path="companies" element={<CompaniesList />} />
+                <Route path="/companies" element={<CompaniesList />} />
                 <Route
-                  path="companies/:company/jobs"
+                  path="/companies/:company/jobs"
                   element={<JobsList key="company-jobs" />}
                 />
-                <Route path="jobs" element={<JobsList key="all-jobs" />} />
+                <Route path="/jobs" element={<JobsList key="all-jobs" />} />
               </Route>
             </Route>
           </Route>

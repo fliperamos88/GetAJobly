@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://us.123rf.com/450wm/dizanna/dizanna1807/dizanna180700150/115019857-job-bulb-word-cloud-collage-concept.jpg?ver=6');
+
+  background-repeat: repeat;
 }
 
 code {
@@ -12,7 +15,193 @@ code {
     monospace;
 }
 
+input {
+  height: 2rem;
+  font-size: 15px;
+  border-radius: 8px;
+  border: solid 1px;
+  padding-left: 8px;
+}
+
 .navBar {
+  background-color: rgb(255, 221, 0);
+}
+
+.nav-Logo {
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: 900;
+  letter-spacing: 0.5em;
+  color: rgb(227, 10, 10);
+  text-shadow: -2px -2px 0px rgb(242, 242, 242);
+}
+
+.navBar-LoggedOut {
+  height: 30px;
   display: flex;
   justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+  align-items: center;
+}
+
+.navBar-Logged {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px 0 10px;
+}
+
+.nav-Links a {
+  margin: 0 0 0 10px;
+  color: rgb(227, 10, 10);
+  font-weight: 700;
+  text-shadow: 1px 1px 0px white;
+  text-decoration: none;
+  transition: font-size 0.2s;
+}
+
+.navBar-Welcome {
+  display: flex;
+  align-items: center;
+}
+
+.navBar-Welcome h3 {
+  color: rgb(227, 10, 10);
+  font-weight: 700;
+  text-shadow: 1px 1px 1px white;
+}
+
+.navBar-Welcome span {
+  color: rgb(10, 115, 227);
+  font-weight: 700;
+  text-shadow: 1px 1px 1px white;
+  margin-left: 3px;
+}
+
+.nav-Links a.active {
+  font-size: large;
+}
+
+.form-component {
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid rgba(11, 149, 208, 0.809);
+  border-radius: 10px;
+  width: 600px;
+  height: 400px;
+  padding-bottom: 40px;
+  box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.4);
+}
+
+#form-container-register {
+  height: 500px;
+  background-color: rgba(89, 169, 203, 0.95);
+  color: white;
+  font-size: large;
+  font-weight: 600;
+}
+
+#form-container-login {
+  height: 250px;
+  background-color: rgba(89, 169, 203, 0.95);
+  color: white;
+  font-size: large;
+  font-weight: 600;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 350px;
+}
+
+.input-container label {
+  margin-bottom: 5px;
+}
+.input-container input {
+  width: 100%;
+}
+
+.submit-edit {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.search-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.company-list-container,
+.job-list-container,
+.applications-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.company-container,
+.job-container {
+  border: 3px solid rgba(255, 0, 0, 0.77);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px 10px 20px;
+  align-items: center;
+  width: 50%;
+  height: 120px;
+  margin: 10px 0 5px 0;
+  box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.4);
+  background-color: rgba(242, 236, 236, 0.978);
+  transition: background-color 0.3s;
+}
+
+.company-details,
+.job-details-container {
+  width: 75%;
+}
+
+.filter-form-container {
+  display: flex;
+  margin-top: 20px;
+}
+.filter-form-container div {
+  display: flex;
+  margin: 0px 5px 8px 5px;
+}
+
+.filter-input {
+  width: 230px;
+}
+
+.company-container:hover,
+.job-container:hover {
+  background-color: rgb(255, 255, 255);
+}
+
+.company-details,
+.job-details-container div {
+  margin-bottom: 4px;
+}
+
+.alert-messages-container {
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
 }

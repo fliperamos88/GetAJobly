@@ -41,16 +41,24 @@ const UserApplications = () => {
 
   return (
     <div>
-      {jobList.map((job) => {
-        return (
-          <JobCard
-            job={job}
-            key={uuidv4()}
-            applicationList={applicationList}
-            removeHandle={removeHandle}
-          />
-        );
-      })}
+      <h2 className="page-title">Your job applications</h2>
+      {jobList.length === 0 && (
+        <div className="alert-messages-container">
+          You have no applications at the moment
+        </div>
+      )}
+      <div className="applications-list-container">
+        {jobList.map((job) => {
+          return (
+            <JobCard
+              job={job}
+              key={uuidv4()}
+              applicationList={applicationList}
+              removeHandle={removeHandle}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

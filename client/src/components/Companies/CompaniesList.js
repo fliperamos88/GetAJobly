@@ -33,17 +33,27 @@ const CompaniesList = () => {
 
   return (
     <>
-      <div>
-        <FilterForm searchHandler={searchHandler} />
-        <div>
-          <span> N. of results: {compList.length}</span>
-          {filter && (
-            <button onClick={() => setFilter(false)}>Remover filter</button>
-          )}
+      <div className="">
+        <h2 className="page-title">List of Companies</h2>
+        <div className="search-form-container">
+          <div>
+            <FilterForm searchHandler={searchHandler} />
+          </div>
+          <div>
+            <span style={{ marginRight: '8px' }}>
+              {' '}
+              N. of results: {compList.length}
+            </span>
+            {filter && (
+              <button onClick={() => setFilter(false)}>Remover filter</button>
+            )}
+          </div>
         </div>
-        {compList.map((company) => (
-          <CompanyCard company={company} key={uuidv4()} />
-        ))}
+        <div class="company-list-container">
+          {compList.map((company) => (
+            <CompanyCard company={company} key={uuidv4()} />
+          ))}
+        </div>
       </div>
     </>
   );

@@ -45,15 +45,12 @@ const User = sequelize.define(
           user.password = await bcrypt.hash(user.password, BCRYPT_WORK_FACTOR);
         }
       },
-      beforeUpdate: async (user) => {
-        if (user.password !== '') {
-          user.password = await bcrypt.hash(user.password, BCRYPT_WORK_FACTOR);
-        } else {
-          user.password = this.password;
-        }
-      },
-      // afterCreate: async (user) => {
-      //   console.log('This is a new user:' + user.username);
+      // beforeUpdate: async (user) => {
+      //   if (user.password !== '') {
+      //     user.password = await bcrypt.hash(user.password, BCRYPT_WORK_FACTOR);
+      //   } else {
+      //     user.password = this.password;
+      //   }
       // },
     },
   }

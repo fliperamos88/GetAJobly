@@ -5,18 +5,41 @@ const CompanyCard = ({ company }) => {
   let navigate = useNavigate();
 
   return (
-    <div style={{ border: 'solid 3px red' }}>
-      <h5>{company.handle}</h5>
-      <h5>{company.name}</h5>
-      <h5>{company.num_employees}</h5>
-      <h5>{company.description}</h5>
-      <button
-        onClick={() =>
-          navigate(`${company.handle}/jobs`, { state: { jobs: company.jobs } })
-        }
-      >
-        Available Jobs
-      </button>
+    <div className="company-container">
+      <div className="company-details">
+        <div>
+          <span>
+            <b>Company name:</b>
+            &nbsp;
+            {company.name}
+          </span>
+        </div>
+        <div>
+          <span>
+            <b>N. of Employees:</b>
+            &nbsp;
+            {company.num_employees}
+          </span>
+        </div>
+        <div>
+          <span>
+            <b>Company Description:</b>
+            &nbsp;
+            {company.description}
+          </span>
+        </div>
+      </div>
+      <div>
+        <button
+          onClick={() =>
+            navigate(`${company.handle}/jobs`, {
+              state: { jobs: company.jobs },
+            })
+          }
+        >
+          Available Jobs
+        </button>
+      </div>
     </div>
   );
 };

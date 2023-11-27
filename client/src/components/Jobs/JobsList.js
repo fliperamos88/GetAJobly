@@ -10,6 +10,7 @@ import {
 } from '../../helpers/filterProvider';
 
 const JobsList = () => {
+  const { company } = useParams();
   const filter = useContext(FilterContext);
   const setFilter = useContext(FilterHandlerContext);
   const location = useLocation();
@@ -54,28 +55,46 @@ const JobsList = () => {
     };
     fetchJobs();
   }, []);
+  console.log(location.state);
 
   return (
     <>
       <div>
         {location.pathname === '/jobs' && (
-          <FilterForm searchHandler={searchHandler} />
+          <h2 className="page-title">List of all available jobs</h2>
         )}
-        <div>
-          <span> N. of results: {jobList.length}</span>
-          {filter && (
-            <button onClick={() => setFilter(false)}>Remover filter</button>
-          )}
+        {location.pathname !== '/jobs' && (
+          <h2 className="page-title">
+            Available jobs at {location.state.jobs[0].company.name}
+          </h2>
+        )}
+        <div className="search-form-container">
+          <div>
+            {location.pathname === '/jobs' && (
+              <FilterForm searchHandler={searchHandler} />
+            )}
+          </div>
+          <div>
+            <span style={{ marginRight: '8px' }}>
+              {' '}
+              N. of results: {jobList.length}
+            </span>
+            {filter && (
+              <button onClick={() => setFilter(false)}>Remover filter</button>
+            )}
+          </div>
         </div>
-        {jobList.map((job) => {
-          return (
-            <JobCard
-              job={job}
-              key={uuidv4()}
-              applicationList={applicationList}
-            />
-          );
-        })}
+        <div className="job-list-container">
+          {jobList.map((job) => {
+            return (
+              <JobCard
+                job={job}
+                key={uuidv4()}
+                applicationList={applicationList}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );
