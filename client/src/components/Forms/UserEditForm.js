@@ -45,7 +45,7 @@ const UserEditForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    setAlertMSG('');
     setSubmit(true);
     try {
       const newUser = await Jobly.update('users', username, formData);
@@ -124,7 +124,9 @@ const UserEditForm = () => {
           {submit && (
             <div
               className={
-                alertMSG ? 'alert alert-success' : 'alert alert-danger'
+                alertMSG === sucessMessage
+                  ? 'alert alert-success'
+                  : 'alert alert-danger'
               }
               role="alert"
             >

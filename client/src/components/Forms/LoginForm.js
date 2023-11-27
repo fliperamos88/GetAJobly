@@ -12,14 +12,13 @@ const LoginForm = () => {
 
   const [formData, setFormData] = useState(initialState);
 
+  const [alertMSG, setAlertMSG] = useState('');
+  const [submit, setSubmit] = useState(false);
+
   const sucessMessage =
-    'Email sent! I will try to get back to you as soon as possible!';
+    "Valid authentication. Redirecting to user's homepage...";
 
-  const failureMessage =
-    'I am sorry, but something went wrong with your message delivery. Feel free to reach out to me directly at ffrf88@icloud.com';
-
-  //   const [alertMSG, setAlertMSG] = useState(true);
-  //   const [submit, setSubmit] = useState(false);
+  const failureMessage = 'Wrong username/password';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,23 +28,26 @@ const LoginForm = () => {
     }));
   };
 
-  //   const closeAlert = () => {
-  //     setSubmit(false);
-  //   };
+  const closeAlert = () => {
+    setSubmit(false);
+    setAlertMSG('');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setAlertMSG('');
+    setSubmit(true);
     try {
       const { data } = await Authenticate.login(formData);
-
-      //   setSubmit(true);
-      //   setFormData(initialState);
-      window.location = `/${data.user.username}`;
+      setAlertMSG(sucessMessage);
+      setTimeout(() => {
+        setFormData(initialState);
+        window.location = `/${data.user.username}`;
+      }, 3000);
     } catch (err) {
-      console.log(err);
-
-      //   setAlertMSG(false);
-      //   setSubmit(true);
+      if (err.response.status) {
+        setAlertMSG(failureMessage);
+      }
     }
   };
 
@@ -85,6 +87,30 @@ const LoginForm = () => {
               <button className="btnContact">SUBMIT</button>
             </div>
           </form>
+        </div>
+        <div className="">
+          {submit && (
+            <div
+              className={
+                alertMSG === sucessMessage
+                  ? 'alert alert-success'
+                  : 'alert alert-danger'
+              }
+              role="alert"
+            >
+              {alertMSG}
+              {alertMSG === failureMessage && (
+                <button
+                  type="button"
+                  className="btn-close"
+                  aria-label="Close"
+                  onClick={closeAlert}
+                >
+                  Close
+                </button>
+              )}
+            </div>
+          )}
         </div>
         {/* <div className="d-flex justify-content-center mt-4 mx-2">
         {submit && (

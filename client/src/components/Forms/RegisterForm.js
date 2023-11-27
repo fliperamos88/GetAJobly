@@ -13,15 +13,13 @@ const RegisterForm = () => {
   };
 
   const [formData, setFormData] = useState(initialState);
+  const [submit, setSubmit] = useState(false);
+  const [alertMSG, setAlertMSG] = useState('');
 
   const sucessMessage =
-    'Email sent! I will try to get back to you as soon as possible!';
+    'Account being created, redirecting to the login page...';
 
-  const failureMessage =
-    'I am sorry, but something went wrong with your message delivery. Feel free to reach out to me directly at ffrf88@icloud.com';
-
-  // const [alertMSG, setAlertMSG] = useState(true);
-  // const [submit, setSubmit] = useState(false);
+  const failureMessage = 'Wrong username/password';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,21 +29,25 @@ const RegisterForm = () => {
     }));
   };
 
-  // const closeAlert = () => {
-  //   setSubmit(false);
-  // };
+  const closeAlert = () => {
+    setSubmit(false);
+    setAlertMSG('');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setAlertMSG('');
+    setSubmit(true);
     try {
       const newUser = await Authenticate.register(formData);
       console.log(newUser);
-      navigate('/login');
-      // setSubmit(true);
-      // setFormData(initialState);
-    } catch {
-      // setAlertMSG(false);
-      // setSubmit(true);
+      setAlertMSG(sucessMessage);
+      setTimeout(() => {
+        setFormData(initialState);
+        navigate('/login');
+      }, 3000);
+    } catch (err) {
+      setAlertMSG(failureMessage);
     }
   };
 
@@ -71,7 +73,7 @@ const RegisterForm = () => {
               />
             </div>
             <div className="input-container">
-              <label htmlFor="lastName" className="">
+              <label htmlFor="last_name" className="">
                 Last Name
               </label>
               <input
@@ -93,6 +95,7 @@ const RegisterForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                required
               ></input>
             </div>
             <div className="input-container">
@@ -105,6 +108,7 @@ const RegisterForm = () => {
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
+                required
               ></input>
             </div>
             <div className="input-container">
@@ -117,12 +121,36 @@ const RegisterForm = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
+                minlength="6"
+                placeholder="six characters minimum"
               ></input>
             </div>
             <div className="submit-edit">
               <button className="btnContact">SUBMIT</button>
             </div>
           </form>
+        </div>
+        <div className="">
+          {submit && (
+            <div
+              className={
+                alertMSG === sucessMessage
+                  ? 'alert alert-success'
+                  : 'alert alert-danger'
+              }
+              role="alert"
+            >
+              {alertMSG}
+              {alertMSG === failureMessage && (
+                <button
+                  type="button"
+                  className="btn-close"
+                  aria-label="Close"
+                  onClick={closeAlert}
+                ></button>
+              )}
+            </div>
+          )}
         </div>
         {/* <div className="d-flex justify-content-center mt-4 mx-2">
         {submit && (

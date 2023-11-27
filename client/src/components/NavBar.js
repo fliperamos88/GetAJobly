@@ -21,6 +21,7 @@ export const NavBar = () => {
 
   const logOut = () => {
     cookies.remove('Jobly');
+    window.location.reload();
   };
 
   return (
@@ -35,7 +36,7 @@ export const NavBar = () => {
           <div className="nav-Links">
             {cookies.get('Jobly') ? (
               <>
-                <NavLink to="/" reloadDocument onClick={logOut}>
+                <NavLink to="" onClick={logOut}>
                   Log Out
                 </NavLink>
               </>

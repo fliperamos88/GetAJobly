@@ -1,6 +1,6 @@
 import User from '../models/user.js';
 import { createToken } from '../helpers/jwtToken.js';
-import { BadRequestError } from '../helpers/expressError.js';
+import { UnauthorizedError } from '../helpers/expressError.js';
 
 export const login = async (req, res, next) => {
   try {
@@ -11,7 +11,7 @@ export const login = async (req, res, next) => {
       res.cookie('Jobly', [user.username, token]);
       res.json({ user: user, token: token });
     } else {
-      throw new BadRequestError('Wrong username/password');
+      throw new UnauthorizedError('Wrong username/password');
     }
     return next();
   } catch (err) {
