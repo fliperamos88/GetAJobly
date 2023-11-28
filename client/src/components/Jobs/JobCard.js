@@ -9,6 +9,7 @@ const cookies = new Cookies();
 const JobCard = ({ job, applicationList, removeHandle }) => {
   const location = useLocation();
   let username;
+
   const [applied, setApplied] = useState(false);
   if (cookies.get('Jobly')) {
     username = cookies.get('Jobly')[0];
@@ -24,7 +25,6 @@ const JobCard = ({ job, applicationList, removeHandle }) => {
 
   const applyForJob = async () => {
     const res = await Jobly.create('applications', applicationBody);
-
     setApplied(true);
   };
 

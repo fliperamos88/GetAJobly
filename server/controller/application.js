@@ -4,7 +4,9 @@ import { Op } from 'sequelize';
 
 export const getAll = async (req, res, next) => {
   try {
-    const allApplications = await Application.findAll();
+    const allApplications = await Application.findAll({
+      attributes: { exclude: ['updatedAt'] },
+    });
     res.send({ Applications: allApplications });
   } catch (err) {
     return next(err);

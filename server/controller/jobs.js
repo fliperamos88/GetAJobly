@@ -1,6 +1,7 @@
 import Job from '../models/job.js';
 import Company from '../models/company.js';
 import { Op } from 'sequelize';
+import User from '../models/user.js';
 
 export const getAll = async (req, res, next) => {
   try {
@@ -12,11 +13,21 @@ export const getAll = async (req, res, next) => {
             [Op.iLike]: `%${req.query.term}%`,
           },
         },
-        include: { model: Company, attributes: ['name'] },
+        include: [
+          { model: Company, attributes: ['name'] },
+          { model: User, as: 'job_candidates' },
+        ],
       });
     } else {
       allJobs = await Job.findAll({
-        include: { model: Company, attributes: ['name'] },
+        include: [
+          { model: Company, attributes: ['name'] },
+          {
+            model: User,
+            as: 'job_candidates',
+            attributes: ['username'],
+          },
+        ],
       });
     }
     res.send({ All_Jobs: allJobs });

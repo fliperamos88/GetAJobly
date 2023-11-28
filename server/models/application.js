@@ -23,9 +23,6 @@ const Application = sequelize.define(
         key: 'id',
       },
     },
-  },
-  {
-    timestamps: false,
   }
 );
 

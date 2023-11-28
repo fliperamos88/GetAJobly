@@ -11,7 +11,6 @@ import {
 
 const CompaniesList = () => {
   const [compList, setCompList] = useState([]);
-  // const [filter, setFilter] = useState(false);
   const filter = useContext(FilterContext);
   const setFilter = useContext(FilterHandlerContext);
 

@@ -21,19 +21,19 @@ const JobsList = () => {
     const fetchApplications = async () => {
       const { data } = await Jobly.getAll('applications');
       const appMap = data.Applications.map((value) => {
-        return Object.values(value).join('-');
+        return value.username + '-' + value.job_id;
       });
       setApplicationList(appMap);
     };
     fetchApplications();
   }, []);
 
+  console.log(applicationList);
   const searchHandler = async (term) => {
     const { data } = await Jobly.getAll('jobs', term);
     setFilter(true);
     setJobList(data.All_Jobs);
   };
-
   useEffect(() => {
     const fetchCompanies = async () => {
       if (!filter && location.pathname === '/jobs') {
@@ -55,7 +55,6 @@ const JobsList = () => {
     };
     fetchJobs();
   }, []);
-  console.log(location.state);
 
   return (
     <>

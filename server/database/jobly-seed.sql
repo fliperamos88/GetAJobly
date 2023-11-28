@@ -371,5 +371,3 @@ VALUES ('Conservator, furniture', 110000, 0, 'watson-davis'),
        ('Accommodation manager', 126000, NULL, 'mejia-scott-ryan');
 
 
-INSERT INTO applications (username, job_id)
-VALUES ('testuser', 95);

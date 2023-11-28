@@ -28,7 +28,7 @@ const UserApplications = () => {
     const fetchApplications = async () => {
       const { data } = await Jobly.getAll('applications');
       const appMap = data.Applications.map((value) => {
-        return Object.values(value).join('-');
+        return value.username + '-' + value.job_id;
       });
       setApplicationList(appMap);
     };
