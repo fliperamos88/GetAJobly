@@ -21,10 +21,18 @@ function App() {
           <Route element={<FilterProvider />}>
             <Route element={<AuthRoute />}>
               <Route element={<NavBar />}>
-                <Route path="/" element={<Home key="general-home" />} />
+                <Route
+                  path="/"
+                  element={
+                    <Home key="general-home" description="general-home" />
+                  }
+                />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/register" element={<RegisterForm />} />
-                <Route path="/:username" element={<Home key="logged-home" />} />
+                <Route
+                  path="/:username"
+                  element={<Home key="logged-home" description="logged-home" />}
+                />
                 <Route path="/:username/profile" element={<EditForm />} />
                 <Route
                   path="/:username/applications"

@@ -66,15 +66,30 @@ const JobCard = ({ job, applicationList, removeHandle }) => {
           </span>
         </div>
       </div>
-      <div>
+      <div className="card-button-container">
         {applied && (
-          <button style={{ color: 'green' }} onClick={withdrawFromJob}>
-            Already applied
-          </button>
+          <>
+            <div>
+              <span className="applied-msg">Applied!</span>
+              <i
+                class="fa-solid fa-circle-check fa-xl"
+                style={{ color: '#20c53c' }}
+              ></i>
+            </div>
+            <div>
+              <button
+                type="button"
+                className="btn btn-warning"
+                onClick={withdrawFromJob}
+              >
+                Remove application
+              </button>
+            </div>
+          </>
         )}
         {!applied && (
-          <button style={{ color: 'red' }} onClick={applyForJob}>
-            Apply
+          <button type="button" className="btn btn-info" onClick={applyForJob}>
+            Apply for this job
           </button>
         )}
       </div>

@@ -31,6 +31,8 @@ const CompanyCard = ({ company }) => {
       </div>
       <div>
         <button
+          type="button"
+          className="btn btn-info"
           onClick={() =>
             navigate(`${company.handle}/jobs`, {
               state: { jobs: company.jobs },

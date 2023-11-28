@@ -4,8 +4,10 @@ import UserEditForm from '../Forms/UserEditForm';
 
 const EditForm = () => {
   return (
-    <div>
-      <UserEditForm />
+    <div className="background-edit-form">
+      <div>
+        <UserEditForm />
+      </div>
     </div>
   );
 };

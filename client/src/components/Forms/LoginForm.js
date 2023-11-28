@@ -15,8 +15,7 @@ const LoginForm = () => {
   const [alertMSG, setAlertMSG] = useState('');
   const [submit, setSubmit] = useState(false);
 
-  const sucessMessage =
-    "Valid authentication. Redirecting to user's homepage...";
+  const sucessMessage = "Valid authentication. Redirecting to user's homepage";
 
   const failureMessage = 'Wrong username/password';
 
@@ -34,9 +33,12 @@ const LoginForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    setSubmit(false);
     e.preventDefault();
     setAlertMSG('');
-    setSubmit(true);
+    setTimeout(() => {
+      setSubmit(true);
+    }, 1000);
     try {
       const { data } = await Authenticate.login(formData);
       setAlertMSG(sucessMessage);
@@ -84,7 +86,9 @@ const LoginForm = () => {
               ></input>
             </div>
             <div className="submit-edit">
-              <button className="btnContact">SUBMIT</button>
+              <button onClick={handleSubmit} className="btn btn-light">
+                SUBMIT
+              </button>
             </div>
           </form>
         </div>
@@ -98,16 +102,21 @@ const LoginForm = () => {
               }
               role="alert"
             >
-              {alertMSG}
+              {alertMSG}{' '}
+              {alertMSG === sucessMessage && (
+                <i
+                  class="fa-solid fa-spinner fa-spin"
+                  style={{ color: '322f2f' }}
+                ></i>
+              )}
               {alertMSG === failureMessage && (
                 <button
                   type="button"
                   className="btn-close"
                   aria-label="Close"
                   onClick={closeAlert}
-                >
-                  Close
-                </button>
+                  style={{ marginLeft: '2px' }}
+                ></button>
               )}
             </div>
           )}

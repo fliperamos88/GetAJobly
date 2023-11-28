@@ -60,7 +60,7 @@ const UserEditForm = () => {
 
   return (
     <div className="form-component">
-      <div className="form-container">
+      <div className="form-container" id="form-container-edit">
         <div className="">
           <h2 className="">Edit Profile</h2>
         </div>
@@ -116,7 +116,9 @@ const UserEditForm = () => {
             ></input>
           </div> */}
             <div className="submit-edit">
-              <button>SUBMIT EDITS</button>
+              <button onClick={handleSubmit} className="btn btn-light">
+                SUBMIT EDITS
+              </button>
             </div>
           </form>
         </div>
@@ -131,33 +133,24 @@ const UserEditForm = () => {
               role="alert"
             >
               {alertMSG}
+              {alertMSG === sucessMessage && (
+                <i
+                  class="fa-solid fa-spinner fa-spin"
+                  style={{ color: '322f2f' }}
+                ></i>
+              )}
               {alertMSG === failureMessage && (
                 <button
                   type="button"
                   className="btn-close"
                   aria-label="Close"
                   onClick={closeAlert}
+                  style={{ marginLeft: '2px' }}
                 ></button>
               )}
             </div>
           )}
         </div>
-        {/* <div className="d-flex justify-content-center mt-4 mx-2">
-        {submit && (
-          <div
-            className={alertMSG ? 'alert alert-success' : 'alert alert-danger'}
-            role="alert"
-          >
-            {alertMSG ? sucessMessage : failureMessage}
-            <button
-              type="button"
-              className="btn-close"
-              aria-label="Close"
-              onClick={closeAlert}
-            ></button>
-          </div>
-        )}
-      </div> */}
       </div>
     </div>
   );

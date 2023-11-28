@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const FilterForm = ({ term, searchHandler }) => {
+const FilterForm = ({ searchHandler, placeholder }) => {
   const initialState = { term: '' };
   const [formData, setFormData] = useState(initialState);
 
@@ -27,10 +27,11 @@ const FilterForm = ({ term, searchHandler }) => {
               value={formData.term}
               onChange={handleChange}
               className="filter-input"
+              placeholder={placeholder}
             ></input>
           </div>
           <div>
-            <button>Sarch Term</button>
+            <button className="btn btn-outline-light">SEARCH</button>
           </div>
         </form>
       </div>

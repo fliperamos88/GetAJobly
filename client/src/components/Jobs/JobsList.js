@@ -59,41 +59,51 @@ const JobsList = () => {
 
   return (
     <>
-      <div>
-        {location.pathname === '/jobs' && (
-          <h2 className="page-title">List of all available jobs</h2>
-        )}
-        {location.pathname !== '/jobs' && (
-          <h2 className="page-title">
-            Available jobs at {location.state.jobs[0].company.name}
-          </h2>
-        )}
-        <div className="search-form-container">
-          <div>
-            {location.pathname === '/jobs' && (
-              <FilterForm searchHandler={searchHandler} />
-            )}
+      <div className="background-list-jobs">
+        <div>
+          {location.pathname === '/jobs' && (
+            <h2 className="page-title">List of all available jobs</h2>
+          )}
+          {location.pathname !== '/jobs' && (
+            <h2 className="page-title">
+              Available jobs at {location.state.jobs[0].company.name}
+            </h2>
+          )}
+          <div className="search-form-container">
+            <div>
+              {location.pathname === '/jobs' && (
+                <FilterForm
+                  searchHandler={searchHandler}
+                  placeholder="Filter by job title"
+                />
+              )}
+            </div>
+            <div className="filter-results-container">
+              <span style={{ marginRight: '8px' }}>
+                {' '}
+                N. of results: {jobList.length}
+              </span>
+              {filter && (
+                <button
+                  onClick={() => setFilter(false)}
+                  className="btn btn-dark"
+                >
+                  Remover filter
+                </button>
+              )}
+            </div>
           </div>
-          <div>
-            <span style={{ marginRight: '8px' }}>
-              {' '}
-              N. of results: {jobList.length}
-            </span>
-            {filter && (
-              <button onClick={() => setFilter(false)}>Remover filter</button>
-            )}
+          <div className="job-list-container">
+            {jobList.map((job) => {
+              return (
+                <JobCard
+                  job={job}
+                  key={uuidv4()}
+                  applicationList={applicationList}
+                />
+              );
+            })}
           </div>
-        </div>
-        <div className="job-list-container">
-          {jobList.map((job) => {
-            return (
-              <JobCard
-                job={job}
-                key={uuidv4()}
-                applicationList={applicationList}
-              />
-            );
-          })}
         </div>
       </div>
     </>

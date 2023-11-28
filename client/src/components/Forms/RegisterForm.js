@@ -35,9 +35,12 @@ const RegisterForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    setSubmit(false);
     e.preventDefault();
     setAlertMSG('');
-    setSubmit(true);
+    setTimeout(() => {
+      setSubmit(true);
+    }, 1000);
     try {
       const newUser = await Authenticate.register(formData);
       console.log(newUser);
@@ -126,7 +129,7 @@ const RegisterForm = () => {
               ></input>
             </div>
             <div className="submit-edit">
-              <button className="btnContact">SUBMIT</button>
+              <button className="btn btn-light">SUBMIT</button>
             </div>
           </form>
         </div>
@@ -141,12 +144,19 @@ const RegisterForm = () => {
               role="alert"
             >
               {alertMSG}
+              {alertMSG === sucessMessage && (
+                <i
+                  class="fa-solid fa-spinner fa-spin"
+                  style={{ color: '322f2f' }}
+                ></i>
+              )}
               {alertMSG === failureMessage && (
                 <button
                   type="button"
                   className="btn-close"
                   aria-label="Close"
                   onClick={closeAlert}
+                  style={{ marginLeft: '2px' }}
                 ></button>
               )}
             </div>

@@ -1,10 +1,20 @@
 import Cookies from 'universal-cookie';
-const cookies = new Cookies();
+import HomeGeneral from './HomeGeneral';
 
-const Home = () => {
+const Home = ({ description }) => {
   return (
     <>
-      <h1>THIS IS HOME!</h1>
+      {description == 'logged-home' ? (
+        <div className="background-home-logged">
+          <h2>
+            “Pleasure in the job puts perfection in the work.” – Aristotle
+          </h2>
+        </div>
+      ) : (
+        <div className="background-home-general">
+          <HomeGeneral />
+        </div>
+      )}
     </>
   );
 };

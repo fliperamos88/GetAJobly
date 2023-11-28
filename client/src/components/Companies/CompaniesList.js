@@ -33,19 +33,24 @@ const CompaniesList = () => {
 
   return (
     <>
-      <div className="">
+      <div className="background-list-companies">
         <h2 className="page-title">List of Companies</h2>
         <div className="search-form-container">
           <div>
-            <FilterForm searchHandler={searchHandler} />
+            <FilterForm
+              searchHandler={searchHandler}
+              placeholder="Filter by company name"
+            />
           </div>
-          <div>
+          <div className="filter-results-container">
             <span style={{ marginRight: '8px' }}>
               {' '}
               N. of results: {compList.length}
             </span>
             {filter && (
-              <button onClick={() => setFilter(false)}>Remover filter</button>
+              <button className="btn btn-dark" onClick={() => setFilter(false)}>
+                Remover filter
+              </button>
             )}
           </div>
         </div>

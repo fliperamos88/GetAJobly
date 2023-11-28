@@ -1,13 +1,19 @@
+html,
 body {
   margin: 0;
+  padding: 0;
+}
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('https://us.123rf.com/450wm/dizanna/dizanna1807/dizanna180700150/115019857-job-bulb-word-cloud-collage-concept.jpg?ver=6');
+}
 
-  background-repeat: repeat;
+* {
+  box-sizing: border-box;
 }
 
 code {
@@ -15,29 +21,114 @@ code {
     monospace;
 }
 
-input {
-  height: 2rem;
-  font-size: 15px;
-  border-radius: 8px;
-  border: solid 1px;
-  padding-left: 8px;
+.background-list-companies,
+.background-list-jobs,
+.background-list-applications,
+.background-edit-form,
+.background-home-logged {
+  background-color: rgb(156, 14, 174);
+  height: 100%;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+.background-home-logged {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.background-home-logged * {
+  margin-top: 40vh;
+}
+
+.background-home-general {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20vh;
+}
+
+.home-container-general {
+  width: 550px;
+  height: 380px;
+  background-color: rgba(155, 14, 174, 0.955);
+  box-shadow: 0px 0px 0px 5px rgb(233, 120, 6) inset;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  color: aliceblue;
+  border-radius: 15%;
+  animation: heartbeat 1s alternate infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.home-welcome-container {
+  padding: 5px 70px 5px 100px;
+  margin-top: 50px;
+}
+
+.jobly-description-container {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.home-buttons-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+#home-button-register,
+#home-button-login {
+  font-size: 17px !important;
+  width: 120px;
+  font-weight: 700;
+  margin-bottom: 100px;
+}
+
+#home-button-register a,
+#home-button-login a {
+  text-decoration: none;
+  color: rgb(227, 10, 10);
+  text-shadow: -0.8px -0.8px 0px rgb(242, 242, 242);
 }
 
 .navBar {
   background-color: rgb(255, 221, 0);
+  position: sticky;
+  top: 0;
 }
 
 .nav-Logo {
-  font-size: 30px;
+  font-size: 25px;
   text-decoration: none;
   font-weight: 900;
   letter-spacing: 0.5em;
   color: rgb(227, 10, 10);
-  text-shadow: -2px -2px 0px rgb(242, 242, 242);
+  text-shadow: -2px -2px 0px rgb(87, 210, 232);
+  -webkit-text-stroke: 0.1px rgb(255, 255, 255);
+}
+
+#nav-logo-container {
+  font-size: 20px;
+  letter-spacing: normal;
 }
 
 .navBar-LoggedOut {
-  height: 30px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   padding: 10px 10px 10px 10px;
@@ -48,6 +139,7 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 5px;
   padding: 0 10px 0 10px;
 }
 
@@ -62,10 +154,10 @@ input {
 
 .navBar-Welcome {
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
-.navBar-Welcome h3 {
+.navBar-Welcome h5 {
   color: rgb(227, 10, 10);
   font-weight: 700;
   text-shadow: 1px 1px 1px white;
@@ -96,14 +188,18 @@ input {
   color: white;
   border-radius: 10px;
   width: 600px;
-  height: 400px;
+  height: auto;
   padding-bottom: 40px;
-  box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 6px 6px 1px rgba(0, 0, 0, 0.4);
   background-color: rgba(89, 169, 203, 0.95);
 }
 
+#form-container-edit {
+  border: 4px solid rgba(249, 249, 249, 0.751);
+}
+
 #form-container-register {
-  height: 520px;
+  height: auto;
   background-color: rgba(89, 169, 203, 0.95);
   color: white;
   font-size: large;
@@ -111,11 +207,24 @@ input {
 }
 
 #form-container-login {
-  height: 300px;
+  height: auto;
   background-color: rgba(89, 169, 203, 0.95);
   color: white;
   font-size: large;
   font-weight: 600;
+}
+
+input {
+  height: auto;
+  font-size: 15px;
+  border-radius: 8px;
+  border: solid 1px;
+  padding-left: 8px;
+}
+
+.alert {
+  width: fit-content;
+  font-size: 14px;
 }
 
 .input-container {
@@ -143,10 +252,19 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 20px;
 }
 
+.filter-results-container {
+  font-size: 18px;
+  padding: 10px;
+  color: aliceblue;
+}
 .page-title {
   text-align: center;
+  margin-top: 20px;
+  color: white;
+  font-weight: 700;
 }
 
 .company-list-container,
@@ -160,24 +278,48 @@ input {
 
 .company-container,
 .job-container {
-  border: 3px solid rgba(255, 0, 0, 0.77);
+  border: 5px solid rgba(255, 98, 0, 0.77);
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px 10px 20px;
   align-items: center;
   width: 50%;
-  height: 120px;
+  height: 130px;
   margin: 10px 0 10px 0;
-  box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.4);
-  background-color: rgba(242, 236, 236, 0.978);
+  box-shadow: 7px 7px 1px rgba(0, 0, 0, 0.4);
+  background-color: rgba(238, 238, 238, 0.978);
   transition: background-color 0.3s;
   transition: margin 0.3s;
+}
+
+.company-container:hover,
+.job-container:hover {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 7px 7px 1px rgba(0, 0, 0, 0.669);
+  margin: 0px 20px 15px 0px;
+  border: 6px solid rgba(255, 98, 0, 0.77);
 }
 
 .company-details,
 .job-details-container {
   width: 75%;
+}
+
+.applied-msg {
+  margin-right: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #20c53c;
+  text-shadow: 1px 1px black;
+  -webkit-text-stroke: 0.1px rgb(0, 0, 16);
+}
+
+.card-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .filter-form-container {
@@ -198,15 +340,14 @@ input {
   margin-bottom: 4px;
 }
 
-.company-container:hover,
-.job-container:hover {
-  background-color: rgb(255, 255, 255);
-  box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.669);
-  margin: 0px 20px 15px 0px;
-}
-
 .alert-messages-container {
   text-align: center;
   font-weight: 600;
   font-size: 15px;
+  text-decoration: underline;
+  color: white;
+}
+
+.btn {
+  font-size: 14px !important;
 }
