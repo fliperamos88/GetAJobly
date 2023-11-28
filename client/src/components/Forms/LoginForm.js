@@ -121,22 +121,6 @@ const LoginForm = () => {
             </div>
           )}
         </div>
-        {/* <div className="d-flex justify-content-center mt-4 mx-2">
-        {submit && (
-          <div
-            className={alertMSG ? 'alert alert-success' : 'alert alert-danger'}
-            role="alert"
-          >
-            {alertMSG ? sucessMessage : failureMessage}
-            <button
-              type="button"
-              className="btn-close"
-              aria-label="Close"
-              onClick={closeAlert}
-            ></button>
-          </div>
-        )}
-      </div> */}
       </div>
     </div>
   );

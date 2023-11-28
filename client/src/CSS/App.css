@@ -4,12 +4,16 @@ body {
   padding: 0;
 }
 body {
+  height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('https://us.123rf.com/450wm/dizanna/dizanna1807/dizanna180700150/115019857-job-bulb-word-cloud-collage-concept.jpg?ver=6');
+  background-image: url('../../public/joblybackground/joblybackground.jpeg');
+  background-size: auto;
+  background-repeat: repeat-x;
+  background-position: bottom right;
 }
 
 * {
@@ -46,22 +50,28 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20vh;
+  margin-top: 30vh;
 }
 
 .home-container-general {
   width: 550px;
   height: 380px;
-  background-color: rgba(155, 14, 174, 0.955);
-  box-shadow: 0px 0px 0px 5px rgb(233, 120, 6) inset;
   top: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
-  color: aliceblue;
+  gap: 10px;
+  color: rgba(155, 14, 174, 0.955);
   border-radius: 15%;
   animation: heartbeat 1s alternate infinite;
+  position: relative;
+}
+
+.logo-container {
+  width: 250px;
+  height: auto;
+  position: absolute;
+  top: -120px;
 }
 
 @keyframes heartbeat {
@@ -141,10 +151,16 @@ code {
   align-items: center;
   margin-top: 5px;
   padding: 0 10px 0 10px;
+  flex-wrap: wrap;
+}
+
+.nav-Links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .nav-Links a {
-  margin: 0 0 0 10px;
   color: rgb(227, 10, 10);
   font-weight: 700;
   text-shadow: 1px 1px 0px white;
@@ -155,6 +171,7 @@ code {
 .navBar-Welcome {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
 }
 
 .navBar-Welcome h5 {
@@ -180,7 +197,7 @@ code {
 }
 
 .form-container {
-  margin-top: 30px;
+  margin: 30px 10px 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -282,10 +299,12 @@ input {
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 10px 20px 10px 20px;
   align-items: center;
   width: 50%;
-  height: 130px;
+  height: auto;
+  min-height: 150px;
   margin: 10px 0 10px 0;
   box-shadow: 7px 7px 1px rgba(0, 0, 0, 0.4);
   background-color: rgba(238, 238, 238, 0.978);
@@ -304,6 +323,16 @@ input {
 .company-details,
 .job-details-container {
   width: 75%;
+  height: auto;
+}
+
+.card-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  height: auto;
+  width: auto;
 }
 
 .applied-msg {
@@ -315,20 +344,15 @@ input {
   -webkit-text-stroke: 0.1px rgb(0, 0, 16);
 }
 
-.card-button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
 .filter-form-container {
   display: flex;
   margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 .filter-form-container div {
   display: flex;
-  margin: 0px 5px 8px 5px;
 }
 
 .filter-input {

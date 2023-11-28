@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom';
 const HomeGeneral = () => {
   return (
     <div className="home-container-general">
+      <div className="logo-container">
+        <img src="/joblylogo/joblyicon.png" className="img-fluid" alt="" />
+      </div>
       <div class="home-welcome-container">
         <div className="jobly-description-container">
           <p>

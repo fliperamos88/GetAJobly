@@ -30,7 +30,7 @@ const JobCard = ({ job, applicationList, removeHandle }) => {
 
   const withdrawFromJob = async () => {
     const res = await Jobly.delete('applications', '', applicationBody);
-    if (location.pathname === '/felipeferreira/applications') {
+    if (location.pathname === `/${username}/applications`) {
       removeHandle(job.id);
     }
     setApplied(false);
@@ -72,7 +72,7 @@ const JobCard = ({ job, applicationList, removeHandle }) => {
             <div>
               <span className="applied-msg">Applied!</span>
               <i
-                class="fa-solid fa-circle-check fa-xl"
+                className="fa-solid fa-circle-check fa-xl"
                 style={{ color: '#20c53c' }}
               ></i>
             </div>

@@ -16,8 +16,7 @@ const RegisterForm = () => {
   const [submit, setSubmit] = useState(false);
   const [alertMSG, setAlertMSG] = useState('');
 
-  const sucessMessage =
-    'Account being created, redirecting to the login page...';
+  const sucessMessage = 'Account being created, redirecting to the login page';
 
   const failureMessage = 'Wrong username/password';
 
@@ -162,22 +161,6 @@ const RegisterForm = () => {
             </div>
           )}
         </div>
-        {/* <div className="d-flex justify-content-center mt-4 mx-2">
-        {submit && (
-          <div
-            className={alertMSG ? 'alert alert-success' : 'alert alert-danger'}
-            role="alert"
-          >
-            {alertMSG ? sucessMessage : failureMessage}
-            <button
-              type="button"
-              className="btn-close"
-              aria-label="Close"
-              onClick={closeAlert}
-            ></button>
-          </div>
-        )}
-      </div> */}
       </div>
     </div>
   );
