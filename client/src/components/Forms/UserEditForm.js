@@ -41,6 +41,7 @@ const UserEditForm = () => {
 
   const closeAlert = () => {
     setSubmit(false);
+    setAlertMSG();
   };
 
   const handleSubmit = async (e) => {

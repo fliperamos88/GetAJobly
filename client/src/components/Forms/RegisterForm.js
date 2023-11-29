@@ -36,19 +36,17 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     setSubmit(false);
     e.preventDefault();
-    setTimeout(() => {
-      setSubmit(true);
-    }, 1000);
     try {
       const newUser = await Authenticate.register(formData);
-      console.log(newUser);
       setAlertMSG(sucessMessage);
+      setSubmit(true);
       setTimeout(() => {
         setFormData(initialState);
         navigate('/login');
       }, 3000);
     } catch (err) {
       setAlertMSG(failureMessage);
+      setSubmit(true);
     }
   };
 
