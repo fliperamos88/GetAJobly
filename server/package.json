@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server",
-    "client": "npm start --prefix ../client",
+    "client": "npm install --prefix ../client && npm run build --prefix ../client && npm install",
     "dev": "concurrently \"npm run client\" \"npm start\""
   },
   "type": "module",
