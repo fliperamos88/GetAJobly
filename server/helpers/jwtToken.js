@@ -2,8 +2,6 @@ import { SECRET_KEY } from '../config/config.js';
 import jwt from 'jsonwebtoken';
 const { sign, verify } = jwt;
 
-/** return signed JWT from user data. */
-
 export const createToken = (user) => {
   console.assert(
     user.is_admin !== undefined,
