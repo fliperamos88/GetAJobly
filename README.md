@@ -1,7 +1,7 @@
 
 # Jobly - Job Application App (with React)
 
-- [Jobly - Job Application App](#jobly---job-application-app-(with-react)
+- [Jobly - Job Application App](#jobly---job-application-app-(with-react))
   - [TeckStack](#teckstack)
   - [Installation](#installation)
   - [Description](#description)
