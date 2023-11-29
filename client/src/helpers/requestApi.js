@@ -11,7 +11,7 @@ axios.defaults.withCredentials = true;
 
 class Jobly {
   static BASE_URL =
-    process.env.REACT_APP_BASE_URL || 'http://localhost:3001/api';
+    process.env.REACT_APP_BASE_URL || 'https://getajobly.onrender.com/api';
 
   static async getAll(endpoint, params = {}) {
     const response = await axios.get(`${this.BASE_URL}/${endpoint}`, {
