@@ -1,4 +1,8 @@
-\connect react-jobly
+
+-- (\connect (database/url))
+
+
+
 
 INSERT INTO users (username, password, first_name, last_name, email, is_admin)
 VALUES ('testuser',

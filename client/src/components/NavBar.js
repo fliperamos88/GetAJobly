@@ -1,9 +1,12 @@
 import { Link, NavLink, Outlet } from 'react-router-dom';
-import Cookies from 'universal-cookie';
+import universalCookies from 'universal-cookie';
 import { Jobly } from '../helpers/requestApi';
 import { useState, useEffect, useContext } from 'react';
 import { FilterHandlerContext } from '../helpers/filterProvider';
-const cookies = new Cookies();
+import { useLocation } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
+const cookies = new universalCookies();
 
 export const NavBar = () => {
   const setFilter = useContext(FilterHandlerContext);
@@ -12,10 +15,11 @@ export const NavBar = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      if (cookies.get('Jobly')) {
+      if (Cookies.get('Jobly')) {
         const { data } = await Jobly.getOne('users', cookies.get('Jobly')[0]);
         setUser(data.User);
         setHeadMessage(true);
+        console.log(Cookies.get());
       }
     };
     fetchUser();
@@ -24,7 +28,7 @@ export const NavBar = () => {
   const logOut = () => {
     setHeadMessage(false);
     setTimeout(async () => {
-      cookies.remove('Jobly');
+      Cookies.remove('Jobly');
       window.location.replace('/');
     }, 2000);
   };
@@ -39,7 +43,7 @@ export const NavBar = () => {
             </Link>
           </div>
           <div className="nav-Links">
-            {cookies.get('Jobly') ? (
+            {user ? (
               <>
                 <a href="#" onClick={logOut}>
                   Log Out

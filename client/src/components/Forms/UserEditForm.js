@@ -26,9 +26,9 @@ const UserEditForm = () => {
 
   const [formData, setFormData] = useState(initialState);
   const [submit, setSubmit] = useState(false);
-  const [alertMSG, setAlertMSG] = useState('');
+  const [alertMSG, setAlertMSG] = useState();
 
-  const sucessMessage = 'Edit submitted! Updating profile...';
+  const sucessMessage = 'Edit submitted! Updating profile';
   const failureMessage = 'I am sorry, but something went wrong';
 
   const handleChange = (e) => {
@@ -44,17 +44,18 @@ const UserEditForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    setSubmit(false);
     e.preventDefault();
-    setAlertMSG('');
-    setSubmit(true);
     try {
       const newUser = await Jobly.update('users', username, formData);
       setAlertMSG(sucessMessage);
+      setSubmit(true);
       setTimeout(() => {
         window.location.reload();
       }, 2000);
     } catch {
       setAlertMSG(failureMessage);
+      setSubmit(true);
     }
   };
 
@@ -102,19 +103,6 @@ const UserEditForm = () => {
                 onChange={handleChange}
               ></input>
             </div>
-            {/* <div className="">
-            <label htmlFor="password" className="">
-              NEW PASSWORD
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="NEW PASSWORD"
-            ></input>
-          </div> */}
             <div className="submit-edit">
               <button onClick={handleSubmit} className="btn btn-light">
                 SUBMIT EDITS
@@ -132,7 +120,7 @@ const UserEditForm = () => {
               }
               role="alert"
             >
-              {alertMSG}
+              {alertMSG}{' '}
               {alertMSG === sucessMessage && (
                 <i
                   class="fa-solid fa-spinner fa-spin"

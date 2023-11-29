@@ -1,4 +1,4 @@
-import express, { json } from 'express';
+import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { NotFoundError } from './helpers/expressError.js';
@@ -8,16 +8,16 @@ import companyRouter from './routes/companyRoutes.js';
 import jobRouter from './routes/jobRoutes.js';
 import applicationRouter from './routes/applicationRoutes.js';
 import authenticateRoutes from './routes/authenticateRoutes.js';
-// import { authenticateJWT } from './middleware/auth';
-// import authRoutes from './routes/auth';
-// import companiesRoutes from './routes/companies';
-// import usersRoutes from './routes/users';
-// import jobsRoutes from './routes/jobs';
+import morgan from 'morgan';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
-// import morgan from 'morgan';
-
+const dirname = path.dirname;
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const buildPath = path.join(__dirname, '../client/build');
 const app = express();
 
+app.use(express.static(buildPath));
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,16 +28,13 @@ app.use('/api/companies', companyRouter);
 app.use('/api/jobs', jobRouter);
 app.use('/api/applications', applicationRouter);
 app.use('/api/auth', authenticateRoutes);
-// app.use(json());
-// app.use(morgan('tiny'));
-// app.use(authenticateJWT);
-
-// app.use('/auth', authRoutes);
-// app.use('/companies', companiesRoutes);
-// app.use('/users', usersRoutes);
-// app.use('/jobs', jobsRoutes);
+app.use(morgan('tiny'));
 
 /** Handle 404 errors -- this matches everything */
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'));
+});
 app.use(function (req, res, next) {
   return next(new NotFoundError());
 });

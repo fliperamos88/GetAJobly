@@ -14,11 +14,11 @@ const RegisterForm = () => {
 
   const [formData, setFormData] = useState(initialState);
   const [submit, setSubmit] = useState(false);
-  const [alertMSG, setAlertMSG] = useState('');
+  const [alertMSG, setAlertMSG] = useState();
 
   const sucessMessage = 'Account being created, redirecting to the login page';
 
-  const failureMessage = 'Wrong username/password';
+  const failureMessage = 'I am sorry, but something went wrong';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,13 +30,12 @@ const RegisterForm = () => {
 
   const closeAlert = () => {
     setSubmit(false);
-    setAlertMSG('');
+    setAlertMSG();
   };
 
   const handleSubmit = async (e) => {
     setSubmit(false);
     e.preventDefault();
-    setAlertMSG('');
     setTimeout(() => {
       setSubmit(true);
     }, 1000);
@@ -142,7 +141,7 @@ const RegisterForm = () => {
               }
               role="alert"
             >
-              {alertMSG}
+              {alertMSG}{' '}
               {alertMSG === sucessMessage && (
                 <i
                   class="fa-solid fa-spinner fa-spin"

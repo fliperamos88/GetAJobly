@@ -8,11 +8,8 @@ const LoginForm = () => {
     password: '',
   };
 
-  let navigate = useNavigate();
-
   const [formData, setFormData] = useState(initialState);
-
-  const [alertMSG, setAlertMSG] = useState('');
+  const [alertMSG, setAlertMSG] = useState();
   const [submit, setSubmit] = useState(false);
 
   const sucessMessage = "Valid authentication. Redirecting to user's homepage";
@@ -29,19 +26,16 @@ const LoginForm = () => {
 
   const closeAlert = () => {
     setSubmit(false);
-    setAlertMSG('');
+    setAlertMSG();
   };
 
   const handleSubmit = async (e) => {
     setSubmit(false);
     e.preventDefault();
-    setAlertMSG('');
-    setTimeout(() => {
-      setSubmit(true);
-    }, 1000);
     try {
       const { data } = await Authenticate.login(formData);
       setAlertMSG(sucessMessage);
+      setSubmit(true);
       setTimeout(() => {
         setFormData(initialState);
         window.location = `/${data.user.username}`;
@@ -49,6 +43,7 @@ const LoginForm = () => {
     } catch (err) {
       if (err.response.status) {
         setAlertMSG(failureMessage);
+        setSubmit(true);
       }
     }
   };
