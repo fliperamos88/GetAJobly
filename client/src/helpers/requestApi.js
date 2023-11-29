@@ -44,7 +44,7 @@ class Jobly {
 
 class Authenticate {
   static BASE_URL =
-    process.env.REACT_APP_BASE_URL || 'http://localhost:3001/api';
+    process.env.REACT_APP_BASE_URL || 'https://getajobly.onrender.com/api';
 
   static async register(reqBody) {
     const response = await axios.post(
