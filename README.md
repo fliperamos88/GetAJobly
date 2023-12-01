@@ -18,9 +18,9 @@ This application was developed with the support of the following tools:
 
 ## Installation
 
-From both the server and client directory
+Provide a database URL or create a new database to sequelize in the config.js file. It runs on PostgreSQL
 
-
+Then, from both the server and client directory, run:
 
 ```shell
 $ npm install
@@ -31,6 +31,8 @@ After package installation, you can run from either the client or server directo
 ```shell
 $ npm run dev
 ```
+
+Sequelize will automatically create the database, but there will be no data in it. You can optionally run the jobly-seed.sql file to insert data into the database.
 
 
 ## Description
