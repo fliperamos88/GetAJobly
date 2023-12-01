@@ -18,7 +18,7 @@ This application was developed with the support of the following tools:
 
 ## Installation
 
-Provide a database URL or create a new database to sequelize in the config.js file. It runs on PostgreSQL
+In the server directory, provide a database URL or create a new database to sequelize in the config.js located in the config directory. It runs on PostgreSQL.
 
 Then, from both the server and client directory, run:
 
@@ -32,7 +32,7 @@ After package installation, you can run from either the client or server directo
 $ npm run dev
 ```
 
-Sequelize will automatically create the database, but there will be no data in it. You can optionally run the jobly-seed.sql file to insert data into the database.
+Sequelize will automatically create the database, but there will be no data in it. From the database directory, located in the server directory, you can optionally run the jobly-seed.sql file to insert data into the database.
 
 
 ## Description
