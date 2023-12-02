@@ -66,6 +66,7 @@ code {
   border-radius: 15%;
   animation: heartbeat 1s alternate infinite;
   position: relative;
+  padding: 0 18px 0 18px;
 }
 
 .logo-container {
