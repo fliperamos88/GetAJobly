@@ -2,18 +2,23 @@
 # Jobly - Job Application App (with React)
 
 - Jobly - Job Application App
-  - [TeckStack](#teckstack)
-  - [Installation](#installation)
   - [Description](#description)
+  - [Tech Stack](#teckstack)
+  - [Installation](#installation)
+ 
 
-## TeckStack
+## Description
+
+A web tool that emulates a job application page. It uses [Bcrypt](https://www.npmjs.com/package/bcrypt) for password hashing and
+[JSON Web Tokens](https://jwt.io) for authentication.
+  
+## Tech Stack
 
 This application was developed with the support of the following tools:
 
 - Programming languages: [JavaScript](https://www.javascript.com)
 - Libraries/Frameworks: [Express](https://expressjs.com), [React](https://react.dev)
 - Database storage and management: [PostgreSQL](https://www.postgresql.org)
-
 
 
 ## Installation
@@ -35,7 +40,4 @@ $ npm run dev
 Sequelize will automatically create the database, but there will be no data in it. From the database directory, located in the server directory, you can optionally run the jobly-seed.sql file to insert data into the database.
 
 
-## Description
 
-A web tool that emulates a job application page. It uses [Bcrypt](https://www.npmjs.com/package/bcrypt) for password hashing and
-[JSON Web Tokens](https://jwt.io) for authentication.
