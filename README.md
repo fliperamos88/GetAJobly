@@ -3,7 +3,7 @@
 
 - Jobly - Job Application App
   - [Description](#description)
-  - [Tech Stack](#teckstack)
+  - [Tech Stack](#tech-stack)
   - [Installation](#installation)
  
 
