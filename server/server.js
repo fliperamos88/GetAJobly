@@ -3,7 +3,7 @@ import app from './app.js';
 
 // await sequelize.sync({ alter: true });
 
-app.listen(3001, () => {
+app.listen(3002, () => {
   console.log('Up an running!');
   console.log;
 });
