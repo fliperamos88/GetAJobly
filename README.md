@@ -9,8 +9,7 @@
 
 ## Description
 
-Jobly is a web application simulating a job application process. It uses [Bcrypt](https://www.npmjs.com/package/bcrypt) for password hashing and
-[JSON Web Tokens](https://jwt.io) for authentication.
+Jobly is a web application simulating a real-world job application process. It provides users with a platform to create profiles, search for open positions, upload resumes, and submit applications. Users will appreciate its utilization of [Bcrypt](https://www.npmjs.com/package/bcrypt) for secure password hashing and [JSON Web Tokens](https://jwt.io) for user authentication.
   
 ## Tech Stack
 
