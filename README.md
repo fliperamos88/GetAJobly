@@ -9,7 +9,7 @@
 
 ## Description
 
-A web tool that emulates a job application page. It uses [Bcrypt](https://www.npmjs.com/package/bcrypt) for password hashing and
+Jobly is a web application simulating a job application process. It uses [Bcrypt](https://www.npmjs.com/package/bcrypt) for password hashing and
 [JSON Web Tokens](https://jwt.io) for authentication.
   
 ## Tech Stack
@@ -23,7 +23,7 @@ This application was developed with the support of the following tools:
 
 ## Installation
 
-In the server directory, provide a database URL or create a new database to sequelize in the config.js located in the config directory. It runs on PostgreSQL.
+In the server directory, provide a database URL or create a new database to sequelize in the config.js located in the config directory. This application uses PostgreSQL.
 
 Then, from both the server and client directory, run:
 
