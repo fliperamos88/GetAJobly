@@ -9,8 +9,7 @@
 
 ## Description
 
-A web tool that emulates a job application page. It uses [Bcrypt](https://www.npmjs.com/package/bcrypt) for password hashing and
-[JSON Web Tokens](https://jwt.io) for authentication.
+Jobly is a web application simulating a real-world job application process. It provides users with a platform to create profiles, search for open positions, upload resumes, and submit applications. Users will appreciate its utilization of [Bcrypt](https://www.npmjs.com/package/bcrypt) for secure password hashing and [JSON Web Tokens](https://jwt.io) for user authentication.
   
 ## Tech Stack
 
@@ -23,7 +22,15 @@ This application was developed with the support of the following tools:
 
 ## Installation
 
-In the server directory, provide a database URL or create a new database to sequelize in the config.js located in the config directory. It runs on PostgreSQL.
+To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by either passing the connection parameters separately to the Sequelize constructor or by passing a single connection URI from the server directory.
+
+Sequelize will automatically create the database, but there will be no data in it. Considering that you have PostgreSQL installed on your computer, to populate the database, run the following command from the server/database directory:
+
+```shell
+$ psql < db_seed.sql
+```
+
+In the server directory, provide a database URL or create a new database to sequelize in the config.js located in the config directory. This application uses PostgreSQL.
 
 Then, from both the server and client directory, run:
 
