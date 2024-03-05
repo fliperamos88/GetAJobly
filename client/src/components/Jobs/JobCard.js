@@ -4,8 +4,6 @@ import { useParams, useLocation } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
-// const
-
 const JobCard = ({ job, applicationList, removeHandle }) => {
   const location = useLocation();
   let username;

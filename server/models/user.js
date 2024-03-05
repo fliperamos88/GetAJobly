@@ -12,9 +12,6 @@ const User = sequelize.define(
     password: {
       type: DataTypes.TEXT,
       allowNull: false,
-      // set(value) {
-      //   this.setDataValue('password', bcrypt.hash(value, saltRounds));
-      // },
     },
     first_name: {
       type: DataTypes.TEXT,
@@ -45,13 +42,6 @@ const User = sequelize.define(
           user.password = await bcrypt.hash(user.password, BCRYPT_WORK_FACTOR);
         }
       },
-      // beforeUpdate: async (user) => {
-      //   if (user.password !== '') {
-      //     user.password = await bcrypt.hash(user.password, BCRYPT_WORK_FACTOR);
-      //   } else {
-      //     user.password = this.password;
-      //   }
-      // },
     },
   }
 );
