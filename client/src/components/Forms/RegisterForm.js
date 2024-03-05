@@ -18,7 +18,7 @@ const RegisterForm = () => {
 
   const sucessMessage = 'Account being created, redirecting to the login page';
 
-  const failureMessage = 'I am sorry, but something went wrong';
+  const failureMessage = 'Username/Email already registered';
 
   const handleChange = (e) => {
     const { name, value } = e.target;
