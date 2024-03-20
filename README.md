@@ -22,15 +22,13 @@ This application was developed with the support of the following tools:
 
 ## Installation
 
-To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by either passing the connection parameters separately to the Sequelize constructor or by passing a single connection URI from the server directory.
+To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by either passing the connection parameters separately to the Sequelize constructor or by passing a single connection URI to the constructor located in server/config/config.js
 
 Sequelize will automatically create the database, but there will be no data in it. Considering that you have PostgreSQL installed on your computer, to populate the database, run the following command from the server/database directory:
 
 ```shell
 $ psql < db_seed.sql
 ```
-
-In the server directory, provide a database URL or create a new database to sequelize in the config.js located in the config directory. This application uses PostgreSQL.
 
 Then, from both the server and client directory, run:
 
