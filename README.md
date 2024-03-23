@@ -1,4 +1,4 @@
-
+mi
 # Jobly - Job Application App (with React)
 
 - Jobly - Job Application App
@@ -42,7 +42,6 @@ After package installation, you can run from either the client or server directo
 $ npm run dev
 ```
 
-Sequelize will automatically create the database, but there will be no data in it. From the database directory, located in the server directory, you can optionally run the jobly-seed.sql file to insert data into the database.
 
 
 
