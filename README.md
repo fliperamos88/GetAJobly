@@ -1,4 +1,3 @@
-mi
 # Jobly - Job Application App (with React)
 
 - Jobly - Job Application App
@@ -22,6 +21,12 @@ This application was developed with the support of the following tools:
 
 ## Installation
 
+To install all the packages on both the frontend and backend side, run the following command from the server directory:
+
+```shell
+$ npm run client
+```
+
 To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by either passing the connection parameters separately to the Sequelize constructor or by passing a single connection URI to the constructor located in server/config/config.js
 
 Sequelize will automatically create the tables, but there will be no data in it. Considering that you have PostgreSQL installed on your computer, to populate the database, run the following command from the server/database directory:
@@ -30,16 +35,10 @@ Sequelize will automatically create the tables, but there will be no data in it.
 $ psql < db_seed.sql
 ```
 
-Then, from both the server and client directory, run:
+After package installation, from the derver directory, run:
 
 ```shell
-$ npm install
-```
-
-After package installation, you can run from either the client or server directory to start both client and server, with the support of [Concurrently](https://www.npmjs.com/package/concurrently):
-
-```shell
-$ npm run dev
+$ npm start
 ```
 
 
