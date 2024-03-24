@@ -1,4 +1,4 @@
-# Jobly - Job Application App (with React)
+# Jobly - Job Application App 
 
 - Jobly - Job Application App
   - [Description](#description)
